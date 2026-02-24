@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balaji D · AI developer portfolio</title>
+  <!-- Google Font: Polo‑style elegant (Quicksand) -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <!-- Google Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #f8f8f8 0%, #ffffff 50%, #f0f0f0 100%);
+      background-size: 300% 300%;
+      animation: cosmicFlow 16s ease infinite alternate;
+      color: #2d2d3a;
+      line-height: 1.5;
+      position: relative;
+      overflow-x: hidden;
+      font-style: italic;
+    }
+
+    /* animated gradient background – AI waves effect */
+    @keyframes cosmicFlow {
+      0% { background-position: 0% 0%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 100%; }
+    }
+
+    /* floating glass particles (glow waves) */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at 20% 30%, rgba(0, 245, 255, 0.15) 0%, transparent 30%),
+                  radial-gradient(circle at 80% 70%, rgba(200, 0, 255, 0.12) 0%, transparent 35%),
+                  radial-gradient(circle at 30% 80%, rgba(255, 120, 240, 0.1) 0%, transparent 40%);
+      z-index: 0;
+      animation: pulseGlow 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      0% { opacity: 0.5; filter: blur(2px); }
+      100% { opacity: 1; filter: blur(6px); }
+    }
+
+    /* all sections sit above background */
+    nav, section {
+      position: relative;
+      z-index: 5;
+    }
+
+    /* ---------- GLASS NAVIGATION ---------- */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1.2rem 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0, 245, 255, 0.3);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 245, 255, 0.15) inset;
+      z-index: 1000;
+    }
+
+    nav h2 {
+      font-weight: 600;
+      font-size: 1.9rem;
+      background: linear-gradient(130deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #2d2d3a;
+      font-weight: 500;
+      font-size: 1.1rem;
+      padding: 0.4rem 0.2rem;
+      transition: 0.25s ease;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav ul li a:hover {
+      color: #667eea;
+      text-shadow: 0 0 15px #667eea, 0 0 30px #764ba2;
+      border-bottom-color: #764ba2;
+      transform: translateY(-2px);
+    }
+
+    /* ---------- SECTION GLOBAL ---------- */
+    section {
+      min-height: 100vh;
+      padding: 7rem 8% 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ---------- HERO SECTION ---------- */
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .hero-left h1 {
+      font-size: 4.5rem;
+      font-weight: 700;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #667eea, #764ba2, #f5a623);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      transition: all 0.3s ease;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-left h1:hover {
+      transform: scale(1.03);
+      filter: drop-shadow(0 0 20px #667eea) drop-shadow(0 0 40px #764ba2);
+    }
+
+    .hero-left span {
+      display: block;
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: #555;
+      margin-top: 0.5rem;
+      border-left: 5px solid #764ba2;
+      padding-left: 1rem;
+      transition: 0.2s;
+    }
+
+    .hero-img {
+      width: 300px;
+      max-width: 100%;
+      border-radius: 30px 10px 30px 10px;
+      box-shadow: 0 25px 40px -10px rgba(102, 126, 234, 0.4), 0 0 0 3px rgba(118, 75, 162, 0.4), 0 0 40px rgba(118, 75, 162, 0.3);
+      animation: float 4.5s ease-in-out infinite;
+      transition: 0.3s;
+      background: rgba(255,255,255,0.3);
+      backdrop-filter: blur(4px);
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-18px) rotate(1deg); filter: brightness(1.1); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    /* ---------- ABOUT (PROFILE) ---------- */
+    .about-wrapper {
+      width: 100%;
+    }
+
+    .about-wrapper h2 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      margin-bottom: 2.5rem;
+      background: linear-gradient(145deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+      border-bottom: 4px solid #764ba2;
+      padding-bottom: 0.3rem;
+    }
+
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-left img {
+      width: 280px;
+      border-radius: 30px 0 30px 0;
+      box-shadow: 0 0 30px rgba(102, 126, 234, 0.4), 0 20px 30px -5px rgba(118, 75, 162, 0.3);
+      transition: 0.4s;
+    }
+
+    .about-left img:hover {
+      transform: scale(1.02) rotate(1deg);
+      box-shadow: 0 0 50px rgba(118, 75, 162, 0.5), 0 0 90px rgba(102, 126, 234, 0.4);
+    }
+
+    /* typewriter clip‑path + cursor */
+    .typewriter-box {
+      flex: 1;
+      min-width: 300px;
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(12px);
+      padding: 2rem 2.5rem;
+      border-radius: 40px 10px 40px 10px;
+      border: 1px solid rgba(102, 126, 234, 0.3);
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.1), 0 0 0 1px rgba(118, 75, 162, 0.2) inset;
+    }
+
+    .typewriter {
+      font-family: 'Quicksand', monospace;  /* monospace fallback for step effect */
+      font-size: 1.2rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: #2d2d3a;
+      white-space: pre-wrap;
+      word-break: break-word;
+      clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+      animation: typeClip 7s steps(45, end) forwards;
+      margin-bottom: 0.5rem;
+    }
+
+    @keyframes typeClip {
+      0% { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
+      100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+    }
+
+    .cursor-blink {
+      display: inline-block;
+      width: 4px;
+      height: 1.6rem;
+      background-color: #764ba2;
+      margin-left: 5px;
+      vertical-align: middle;
+      box-shadow: 0 0 15px #764ba2, 0 0 30px #667eea;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* ---------- SKILLS (vibrant grid) ---------- */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 1.8rem;
+      width: 100%;
+    }
+
+    .skill-card {
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(102, 126, 234, 0.15);
+      padding: 2rem 1rem;
+      border-radius: 25px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: #2d2d3a;
+      transition: 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+      box-shadow: 0 10px 20px -8px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    /* unique color tones per card — via border & glow */
+    .skill-card:nth-child(1) { border-top: 4px solid #667eea; }  /* Java */
+    .skill-card:nth-child(2) { border-top: 4px solid #f5a623; }  /* JS */
+    .skill-card:nth-child(3) { border-top: 4px solid #e74c3c; }  /* HTML/CSS */
+    .skill-card:nth-child(4) { border-top: 4px solid #3498db; }  /* C */
+    .skill-card:nth-child(5) { border-top: 4px solid #9b59b6; }  /* C++ */
+    .skill-card:nth-child(6) { border-top: 4px solid #2ecc71; }  /* MySQL */
+    .skill-card:nth-child(7) { border-top: 4px solid #e91e63; }  /* Git */
+    .skill-card:nth-child(8) { border-top: 4px solid #8e44ad; }  /* DSA */
+    .skill-card:nth-child(9) { border-top: 4px solid #f39c12; }  /* Problem solving */
+
+    .skill-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      background: linear-gradient(145deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
+      border-color: transparent;
+      box-shadow: 0 0 35px rgba(102, 126, 234, 0.4), 0 0 20px rgba(118, 75, 162, 0.4), 0 20px 30px -8px rgba(0,0,0,0.15);
+      color: #667eea;
+    }
+
+    /* ---------- PROJECTS (glass cards with AI wave) ---------- */
+    .projects-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      justify-content: center;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 2.2rem 2rem;
+      border-radius: 40px 10px 40px 10px;
+      width: 380px;
+      max-width: 100%;
+      border: 1px solid rgba(102, 126, 234, 0.25);
+      box-shadow: 0 30px 40px -20px rgba(0,0,0,0.1), 0 0 0 1px rgba(118, 75, 162, 0.15) inset;
+      transition: 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -20%;
+      width: 150%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 60%);
+      opacity: 0.2;
+      transform: rotate(20deg);
+      transition: 0.7s;
+    }
+
+    .project-card:hover {
+      transform: scale(1.03) translateY(-8px);
+      box-shadow: 0 0 35px rgba(102, 126, 234, 0.4), 0 0 15px rgba(118, 75, 162, 0.4), 0 20px 30px -5px rgba(0,0,0,0.15);
+      border-color: #764ba2;
+    }
+
+    .project-card:hover::after {
+      opacity: 0.4;
+      transform: rotate(0deg) scale(1.2);
+      background: radial-gradient(circle, rgba(118, 75, 162, 0.3) 0%, rgba(102, 126, 234, 0.3) 80%);
+    }
+
+    .project-card h3 {
+      font-size: 2rem;
+      font-weight: 600;
+      background: linear-gradient(145deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .project-card p {
+      margin-top: 0.7rem;
+      color: #555;
+      font-weight: 300;
+      padding-left: 0.5rem;
+      border-left: 3px solid #764ba2;
+    }
+
+    /* ---------- CONTACT SECTION (glass + form) ---------- */
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(14px);
+      border-radius: 60px 15px 60px 15px;
+      padding: 3rem 3rem;
+      border: 1px solid rgba(102, 126, 234, 0.2);
+      box-shadow: 0 30px 50px -30px rgba(0,0,0,0.1), 0 0 30px rgba(118, 75, 162, 0.15);
+    }
+
+    .contact-info {
+      flex: 1 1 260px;
+    }
+
+    .contact-info h2 {
+      font-size: 2.5rem;
+      background: linear-gradient(130deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 2rem;
+    }
+
+    .contact-info p {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border-bottom: 1px dashed rgba(118, 75, 162, 0.4);
+      padding-bottom: 0.7rem;
+      color: #2d2d3a;
+    }
+
+    .contact-info .linkedin-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: #2d2d3a;
+      border-bottom: 1px dashed rgba(118, 75, 162, 0.4);
+      padding-bottom: 0.7rem;
+      transition: 0.3s;
+    }
+
+    .contact-info .linkedin-link:hover {
+      color: #0077b5;
+      transform: translateX(5px);
+    }
+
+    .contact-info .linkedin-link img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .contact-form {
+      flex: 2 1 340px;
+    }
+
+    .contact-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      background: rgba(255, 255, 255, 0.5);
+      border: 1.5px solid rgba(102, 126, 234, 0.3);
+      border-radius: 40px 8px 40px 8px;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      color: #2d2d3a;
+      outline: none;
+      transition: 0.3s;
+      backdrop-filter: blur(8px);
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: #888;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #764ba2;
+      box-shadow: 0 0 25px rgba(102, 126, 234, 0.3), 0 0 40px rgba(118, 75, 162, 0.3);
+      transform: scale(1.02);
+    }
+
+    .contact-form button {
+      background: linear-gradient(120deg, #667eea, #764ba2);
+      border: none;
+      padding: 1rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: white;
+      border-radius: 50px 10px 50px 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 10px 20px -5px rgba(102, 126, 234, 0.4);
+    }
+
+    .contact-form button:hover {
+      transform: scale(1.05) translateY(-4px);
+      box-shadow: 0 0 35px rgba(102, 126, 234, 0.5), 0 0 60px rgba(118, 75, 162, 0.4);
+      background: linear-gradient(120deg, #764ba2, #667eea);
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 900px) {
+      nav {
+        padding: 1rem 5%;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      nav ul {
+        gap: 1.2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .hero-left h1 {
+        font-size: 3.2rem;
+      }
+      .hero-left span {
+        font-size: 1.4rem;
+      }
+    }
+
+    @media (max-width: 650px) {
+      section {
+        padding: 7rem 5% 3rem;
+      }
+      .about {
+        gap: 2rem;
+      }
+      .typewriter-box {
+        padding: 1.5rem;
+      }
+      .typewriter {
+        font-size: 1rem;
+      }
+      .contact-grid {
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    /* little extra: smooth entrance */
+    .hero-left, .hero-img, .about-left, .typewriter-box, .skill-card, .project-card {
+      animation: fadeGlow 1s ease backwards;
+    }
+    @keyframes fadeGlow {
+      0% { opacity: 0; filter: blur(6px); }
+      100% { opacity: 1; filter: blur(0); }
+    }
+
+    /* ---------- CHATBOT ---------- */
+    .chatbot-toggle {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 65px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5), 0 0 0 3px rgba(118, 75, 162, 0.3);
+      z-index: 2000;
+      animation: botFloat 3s ease-in-out infinite;
+      transition: transform 0.3s ease;
+    }
+
+    .chatbot-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes botFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .chatbot-toggle .material-icons {
+      color: white;
+      font-size: 32px;
+    }
+
+    .chatbot-window {
+      position: fixed;
+      bottom: 110px;
+      right: 30px;
+      width: 380px;
+      max-width: calc(100vw - 60px);
+      height: 480px;
+      max-height: calc(100vh - 140px);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 25px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(102, 126, 234, 0.3);
+      z-index: 1999;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      animation: botSlideIn 0.4s ease;
+    }
+
+    @keyframes botSlideIn {
+      0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .chatbot-window.active {
+      display: flex;
+    }
+
+    .chatbot-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .chatbot-header .material-icons {
+      color: white;
+      font-size: 28px;
+    }
+
+    .chatbot-header h3 {
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .chatbot-close {
+      margin-left: auto;
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+
+    .chatbot-close:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .chatbot-messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .message {
+      max-width: 85%;
+      padding: 12px 16px;
+      border-radius: 18px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      animation: msgFadeIn 0.3s ease;
+    }
+
+    @keyframes msgFadeIn {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .bot-message {
+      background: rgba(102, 126, 234, 0.15);
+      border: 1px solid rgba(102, 126, 234, 0.25);
+      color: #2d2d3a;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+
+    .user-message {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+
+    .chatbot-input {
+      padding: 15px;
+      display: flex;
+      gap: 10px;
+      background: rgba(240, 240, 250, 0.8);
+      border-top: 1px solid rgba(102, 126, 234, 0.2);
+    }
+
+    .chatbot-input input {
+      flex: 1;
+      padding: 12px 18px;
+      border: 1.5px solid rgba(102, 126, 234, 0.3);
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.8);
+      color: #2d2d3a;
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.3s;
+    }
+
+    .chatbot-input input::placeholder {
+      color: #888;
+    }
+
+    .chatbot-input input:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .chatbot-input button {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .chatbot-input button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+    }
+
+    @media (max-width: 500px) {
+      .chatbot-toggle {
+        bottom: 20px;
+        right: 20px;
+        width: 55px;
+        height: 55px;
+      }
+      .chatbot-window {
+        bottom: 90px;
+        right: 15px;
+        left: 15px;
+        width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- STICKY NAVIGATION (glassmorphism + neon hover) -->
+  <nav>
+    <h2>BALAJI D</h2>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO SECTION (left text + floating avatar) -->
+  <section id="home" class="hero">
+    <div class="hero-left">
+      <h1>BALAJI D</h1>
+      <span>Aspiring Full Stack Developer</span>
+    </div>
+    <img src="/images/WhatsApp Image 2026-02-24 at 3.39.22 PM.jpeg" alt="Balaji avatar" class="hero-img" onerror="this.src='https://i.pravatar.cc/300?img=7'">
+  </section>
+
+  <!-- ABOUT SECTION with PROFILE title + typing clip animation -->
+  <section id="about">
+    <div class="about-wrapper">
+      <h2>PROFILE</h2>
+      <div class="about">
+        <div class="about-left">
+          <img src="/images/WhatsApp Image 2026-02-24 at 3.39.22 PM.jpeg" alt="profile" onerror="this.src='https://i.pravatar.cc/300?img=7'">
+        </div>
+        <div class="typewriter-box">
+          <!-- typewriter effect via clip-path steps + blinking cursor -->
+          <div class="typewriter">
+            Motivated B.E. Computer Science student with a strong foundation in Java, Data Structures, and Full Stack Development. Eager to apply problem-solving skills and technical knowledge to real-world projects and contribute to a professional work environment.
+          </div>
+          <span class="cursor-blink"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS (grid of glass cards with unique hover) -->
+  <section id="skills">
+    <div class="skills-container">
+      <div class="skill-card">Java</div>
+      <div class="skill-card">JavaScript</div>
+      <div class="skill-card">HTML & CSS</div>
+      <div class="skill-card">C</div>
+      <div class="skill-card">C++</div>
+      <div class="skill-card">MySQL</div>
+      <div class="skill-card">Git</div>
+      <div class="skill-card">Data Structures & Algorithms</div>
+      <div class="skill-card">Problem Solving</div>
+    </div>
+  </section>
+
+  <!-- PROJECTS (two glass cards with animated wave) -->
+  <section id="projects">
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Duty Chart</h3>
+        <p>Implemented Excel-based data processing for duty allocation and reporting.</p>
+        <p>Developed a simple and user-friendly interface using Python and Tkinter.</p>
+      </div>
+      <div class="project-card">
+        <h3>Portfolio</h3>
+        <p>Designed and developed a responsive personal portfolio website to showcase projects and skills.</p>
+        <p>Implemented clean UI design and ensured compatibility across different devices.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION + functional form (FormSubmit) -->
+  <section id="contact">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>CONTACT</h2>
+        <p><span class="material-icons" style="color: #667eea; font-size: 24px;">email</span> balaji29102005@gmail.com</p>
+        <p><span class="material-icons" style="color: #667eea; font-size: 24px;">location_on</span> Salem, Tamilnadu</p>
+        <a href="https://www.linkedin.com/in/balaji-d-5b9632289" target="_blank" class="linkedin-link">
+          <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" style="width: 24px; height: 24px;">
+          <span>LinkedIn Profile</span>
+        </a>
+      </div>
+      <div class="contact-form">
+        <form action="https://formsubmit.co/balaji29102005@gmail.com" method="POST">
+          <!-- honeypot / optional (but not required) -->
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- subtle footer (optional) but keep clean -->
+
+  <!-- CHATBOT -->
+  <div class="chatbot-toggle" onclick="toggleChatbot()">
+    <span class="material-icons">chat</span>
+  </div>
+
+  <div class="chatbot-window" id="chatbotWindow">
+    <div class="chatbot-header">
+      <span class="material-icons">smart_toy</span>
+      <h3>Portfolio Assistant</h3>
+      <button class="chatbot-close" onclick="toggleChatbot()">
+        <span class="material-icons" style="font-size: 20px;">close</span>
+      </button>
+    </div>
+    <div class="chatbot-messages" id="chatMessages">
+      <div class="message bot-message">
+        Hi! I'm here to help you learn about Balaji. What would you like to know?
+      </div>
+    </div>
+    <div class="chatbot-input">
+      <input type="text" id="userInput" placeholder="Ask about Balaji..." onkeypress="handleKeyPress(event)">
+      <button onclick="sendMessage()">
+        <span class="material-icons" style="font-size: 22px;">send</span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const portfolioInfo = {
+      about: "Balaji D is a motivated B.E. Computer Science student with a strong foundation in Java, Data Structures, and Full Stack Development. He's eager to apply problem-solving skills and technical knowledge to real-world projects.",
+      skills: "Balaji's skills include: Java, JavaScript, HTML & CSS, C, C++, MySQL, Git, Data Structures & Algorithms, and Problem Solving.",
+      projects: "Balaji has worked on: 1) Duty Chart - Excel-based data processing for duty allocation using Python and Tkinter. 2) Portfolio - A responsive personal portfolio website.",
+      contact: "You can reach Balaji at: Email: balaji29102005@gmail.com | Location: Salem, Tamilnadu",
+      education: "Balaji is pursuing B.E. in Computer Science.",
+      experience: "Balaji is currently a student but has worked on projects like Duty Chart and Portfolio website."
+    };
+
+    function toggleChatbot() {
+      const window = document.getElementById('chatbotWindow');
+      window.classList.toggle('active');
+    }
+
+    function handleKeyPress(event) {
+      if (event.key === 'Enter') {
+        sendMessage();
+      }
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('userInput');
+      const message = input.value.trim().toLowerCase();
+      
+      if (!message) return;
+
+      // Add user message
+      addMessage(message, 'user');
+      input.value = '';
+
+      // Process and respond
+      setTimeout(() => {
+        const response = getResponse(message);
+        addMessage(response, 'bot');
+      }, 500);
+    }
+
+    function addMessage(text, type) {
+      const messagesContainer = document.getElementById('chatMessages');
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `message ${type}-message`;
+      messageDiv.textContent = text;
+      messagesContainer.appendChild(messageDiv);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    function getResponse(message) {
+      if (message.includes('about') || message.includes('who') || message.includes('profile')) {
+        return portfolioInfo.about;
+      } else if (message.includes('skill') || message.includes('tech') || message.includes('technology')) {
+        return portfolioInfo.skills;
+      } else if (message.includes('project') || message.includes('work')) {
+        return portfolioInfo.projects;
+      } else if (message.includes('contact') || message.includes('email') || message.includes('reach')) {
+        return portfolioInfo.contact;
+      } else if (message.includes('education') || message.includes('study') || message.includes('college')) {
+        return portfolioInfo.education;
+      } else if (message.includes('experience') || message.includes('internship') || message.includes('job')) {
+        return portfolioInfo.experience;
+      } else if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
+        return "Hello! Feel free to ask about Balaji's about, skills, projects, or contact info!";
+      } else if (message.includes('thank')) {
+        return "You're welcome! Let me know if you need any more information.";
+      } else {
+        return "I'm here to help! Ask me about Balaji's about, skills, projects, or contact information.";
+      }
+    }
+  </script>
+</body>
+</html>
